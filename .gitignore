@@ -1,0 +1,13 @@
+# Environment files
+.env
+backend/.env
+frontend/.env
+ai-service/.env
+
+# Node modules
+node_modules/
+
+# Build folders
+.next/
+dist/
+build/
