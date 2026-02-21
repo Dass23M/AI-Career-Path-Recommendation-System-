@@ -41,10 +41,16 @@ export default function Footer() {
         <div style={{ height: "2px", background: "linear-gradient(to right, #0a0a0a, #c8b89a, #0a0a0a)" }} />
 
         <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid md:grid-cols-4 gap-12">
 
-            {/* Brand */}
-            <div className="md:col-span-1">
+          {/* 
+            Mobile:  1 col stacked
+            md:      2 col (brand + links side by side)
+            lg:      4 col original layout
+          */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+
+            {/* Brand — full width on mobile, spans normally on lg */}
+            <div className="sm:col-span-2 lg:col-span-1">
               <Link
                 href="/"
                 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700, fontSize: "1.5rem", color: "#f5f0e8", letterSpacing: "-0.02em" }}
@@ -69,33 +75,33 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Links */}
+            {/* Link groups — 2 col on mobile, 1 col each on lg */}
             <FooterLinkGroup
               title="Product"
               links={[
                 { label: "Career Prediction", href: "/prediction" },
-                { label: "Dashboard", href: "/dashboard" },
-                { label: "Skill Analysis", href: "/" },
-                { label: "Roadmaps", href: "/" },
+                { label: "Dashboard",         href: "/dashboard"  },
+                { label: "Skill Analysis",    href: "/"           },
+                { label: "Roadmaps",          href: "/"           },
               ]}
             />
 
             <FooterLinkGroup
               title="Company"
               links={[
-                { label: "About", href: "/" },
-                { label: "Contact", href: "/" },
-                { label: "Blog", href: "/" },
-                { label: "Careers", href: "/" },
+                { label: "About",   href: "/about" },
+                { label: "Contact", href: "/"      },
+                { label: "Blog",    href: "/"      },
+                { label: "Careers", href: "/"      },
               ]}
             />
 
             <FooterLinkGroup
               title="Legal"
               links={[
-                { label: "Privacy Policy", href: "/" },
+                { label: "Privacy Policy",   href: "/" },
                 { label: "Terms of Service", href: "/" },
-                { label: "Cookie Policy", href: "/" },
+                { label: "Cookie Policy",    href: "/" },
               ]}
             />
 
@@ -104,7 +110,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div style={{ borderTop: "1px solid #1e1e1e" }}>
-          <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center gap-3">
+          <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center gap-3 text-center md:text-left">
             <span
               className="text-xs tracking-widest"
               style={{ fontFamily: "'DM Mono', monospace", color: "#444", textTransform: "uppercase", letterSpacing: "0.1em" }}
