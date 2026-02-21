@@ -7,47 +7,35 @@ import MarqueeBar from "@/components/Marqueebar";
 // ── Inline SVG Illustrations ──────────────────────────────
 const BrainCircuitIllustration = () => (
   <svg viewBox="0 0 400 340" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    {/* Grid dots */}
     {Array.from({ length: 6 }).map((_, row) =>
       Array.from({ length: 8 }).map((_, col) => (
         <circle key={`${row}-${col}`} cx={40 + col * 48} cy={30 + row * 52} r="2" fill="#222" opacity="0.4" />
       ))
     )}
-    {/* Brain outline */}
     <path d="M160 240 C120 240 90 210 90 175 C90 155 100 138 116 128 C112 118 112 105 120 97 C128 89 140 87 150 91 C155 82 164 76 176 76 C185 76 193 80 198 87 C203 80 213 76 224 76 C236 76 245 82 250 91 C260 87 272 89 280 97 C288 105 288 118 284 128 C300 138 310 155 310 175 C310 210 280 240 240 240 Z" stroke="#111" strokeWidth="2.5" fill="#f5f0e8"/>
-    {/* Brain lobes detail */}
     <path d="M200 240 L200 160" stroke="#111" strokeWidth="1.5" strokeDasharray="4 3"/>
     <path d="M140 150 C148 140 158 136 168 140" stroke="#888" strokeWidth="1.5" strokeLinecap="round"/>
     <path d="M145 165 C150 155 162 152 172 156" stroke="#888" strokeWidth="1.5" strokeLinecap="round"/>
     <path d="M230 150 C238 140 248 136 258 140" stroke="#888" strokeWidth="1.5" strokeLinecap="round"/>
     <path d="M228 165 C234 155 246 152 256 156" stroke="#888" strokeWidth="1.5" strokeLinecap="round"/>
-    {/* Circuit paths */}
     <path d="M310 175 L360 175 L360 100 L330 100" stroke="#111" strokeWidth="1.5" strokeLinecap="round"/>
     <path d="M330 100 L310 80" stroke="#111" strokeWidth="1.5" strokeLinecap="round"/>
     <circle cx="360" cy="175" r="5" fill="#111"/>
     <circle cx="330" cy="100" r="5" fill="#111"/>
     <path d="M360 100 L390 100" stroke="#111" strokeWidth="1.5" strokeLinecap="round"/>
     <circle cx="392" cy="100" r="3" fill="none" stroke="#111" strokeWidth="1.5"/>
-    
     <path d="M90 175 L50 175 L50 260 L80 260" stroke="#111" strokeWidth="1.5" strokeLinecap="round"/>
     <circle cx="50" cy="175" r="5" fill="#111"/>
     <path d="M80 260 L50 280" stroke="#111" strokeWidth="1.5" strokeLinecap="round"/>
     <circle cx="50" cy="280" r="5" fill="#111"/>
-    
-    {/* Nodes */}
     <circle cx="180" cy="120" r="8" fill="#111"/>
     <circle cx="220" cy="120" r="8" fill="#111"/>
     <circle cx="200" cy="145" r="6" fill="#555"/>
     <path d="M180 120 L200 145 L220 120" stroke="#111" strokeWidth="1" opacity="0.5"/>
-    
-    {/* Floating labels */}
     <rect x="330" y="55" width="68" height="22" rx="4" fill="#111"/>
     <text x="364" y="70" textAnchor="middle" fill="#f5f0e8" fontSize="9" fontFamily="monospace">AI ENGINE</text>
-    
     <rect x="10" y="268" width="76" height="22" rx="4" fill="#111"/>
     <text x="48" y="283" textAnchor="middle" fill="#f5f0e8" fontSize="9" fontFamily="monospace">YOUR DATA</text>
-    
-    {/* Decorative arrows */}
     <path d="M320 66 L332 60" stroke="#111" strokeWidth="1.5" markerEnd="url(#arr)" strokeLinecap="round"/>
     <path d="M86 268 L80 262" stroke="#111" strokeWidth="1.5" strokeLinecap="round"/>
   </svg>
@@ -55,15 +43,12 @@ const BrainCircuitIllustration = () => (
 
 const RoadmapIllustration = () => (
   <svg viewBox="0 0 380 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    {/* Background grid */}
     {Array.from({ length: 4 }).map((_, row) =>
       Array.from({ length: 6 }).map((_, col) => (
         <rect key={`${row}-${col}`} x={20 + col * 58} y={20 + row * 65} width="40" height="50" rx="4" fill="none" stroke="#e8e0d0" strokeWidth="1"/>
       ))
     )}
-    {/* Path line */}
-    <path d="M60 290 C60 200 160 200 160 120 C160 60 240 60 240 120 C240 180 340 180 340 100" stroke="#111" strokeWidth="3" strokeLinecap="round" strokeDasharray="none"/>
-    {/* Steps/milestones */}
+    <path d="M60 290 C60 200 160 200 160 120 C160 60 240 60 240 120 C240 180 340 180 340 100" stroke="#111" strokeWidth="3" strokeLinecap="round"/>
     {[
       { cx: 60, cy: 290, label: "START", sublabel: "Profile" },
       { cx: 160, cy: 200, label: "LEARN", sublabel: "Skills" },
@@ -78,11 +63,9 @@ const RoadmapIllustration = () => (
         {i === 3 && <path d="M334 94 L340 100 L346 94" stroke="#f5f0e8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>}
       </g>
     ))}
-    {/* Step numbers */}
     <text x="60" y="294" textAnchor="middle" fill="#111" fontSize="11" fontFamily="monospace" fontWeight="bold">1</text>
     <text x="160" y="204" textAnchor="middle" fill="#111" fontSize="11" fontFamily="monospace" fontWeight="bold">2</text>
     <text x="240" y="124" textAnchor="middle" fill="#111" fontSize="11" fontFamily="monospace" fontWeight="bold">3</text>
-    {/* Decorative elements */}
     <rect x="280" y="220" width="80" height="50" rx="6" fill="#111"/>
     <text x="320" y="242" textAnchor="middle" fill="#c8b89a" fontSize="8" fontFamily="monospace">TIMELINE</text>
     <text x="320" y="258" textAnchor="middle" fill="#f5f0e8" fontSize="10" fontFamily="monospace" fontWeight="bold">8 months</text>
@@ -91,49 +74,29 @@ const RoadmapIllustration = () => (
 
 const SkillGapIllustration = () => (
   <svg viewBox="0 0 360 280" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-    {/* Radar chart */}
     {[1, 0.7, 0.4].map((scale, i) => (
       <polygon
         key={i}
         points={`${180},${140 - 100 * scale} ${180 + 86.6 * scale},${140 - 50 * scale} ${180 + 86.6 * scale},${140 + 50 * scale} ${180},${140 + 100 * scale} ${180 - 86.6 * scale},${140 + 50 * scale} ${180 - 86.6 * scale},${140 - 50 * scale}`}
-        stroke="#ddd"
-        strokeWidth="1"
-        fill={i === 0 ? "#f5f0e8" : "none"}
+        stroke="#ddd" strokeWidth="1" fill={i === 0 ? "#f5f0e8" : "none"}
       />
     ))}
-    {/* Axis lines */}
     {[0, 60, 120, 180, 240, 300].map((angle, i) => {
       const rad = (angle - 90) * Math.PI / 180;
       return <line key={i} x1={180} y1={140} x2={180 + 100 * Math.cos(rad)} y2={140 + 100 * Math.sin(rad)} stroke="#ccc" strokeWidth="1"/>;
     })}
-    {/* Current skills polygon */}
-    <polygon
-      points="180,60 245,100 238,185 180,215 122,185 135,100"
-      stroke="#111"
-      strokeWidth="2"
-      fill="#111"
-      fillOpacity="0.12"
-    />
-    {/* Target skills polygon */}
-    <polygon
-      points="180,40 262,90 262,190 180,240 98,190 98,90"
-      stroke="#888"
-      strokeWidth="1.5"
-      strokeDasharray="5 3"
-      fill="none"
-    />
-    {/* Skill labels */}
+    <polygon points="180,60 245,100 238,185 180,215 122,185 135,100" stroke="#111" strokeWidth="2" fill="#111" fillOpacity="0.12"/>
+    <polygon points="180,40 262,90 262,190 180,240 98,190 98,90" stroke="#888" strokeWidth="1.5" strokeDasharray="5 3" fill="none"/>
     {[
-      { angle: -90, label: "Python", x: 180, y: 28 },
-      { angle: -30, label: "Data", x: 276, y: 82 },
-      { angle: 30, label: "ML", x: 276, y: 202 },
-      { angle: 90, label: "Stats", x: 180, y: 252 },
-      { angle: 150, label: "SQL", x: 84, y: 202 },
-      { angle: 210, label: "Viz", x: 84, y: 82 },
+      { label: "Python", x: 180, y: 28 },
+      { label: "Data", x: 276, y: 82 },
+      { label: "ML", x: 276, y: 202 },
+      { label: "Stats", x: 180, y: 252 },
+      { label: "SQL", x: 84, y: 202 },
+      { label: "Viz", x: 84, y: 82 },
     ].map((s, i) => (
       <text key={i} x={s.x} y={s.y} textAnchor="middle" fill="#111" fontSize="10" fontFamily="monospace" fontWeight="bold">{s.label}</text>
     ))}
-    {/* Legend */}
     <rect x="10" y="250" width="10" height="10" rx="1" fill="#111" fillOpacity="0.2" stroke="#111" strokeWidth="1.5"/>
     <text x="25" y="259" fill="#555" fontSize="8" fontFamily="monospace">Your Skills</text>
     <line x1="90" y1="255" x2="102" y2="255" stroke="#888" strokeWidth="1.5" strokeDasharray="3 2"/>
@@ -276,7 +239,6 @@ const faqs: Faq[] = [
 export default function Home() {
   return (
     <>
-      {/* Google Fonts import */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -319,19 +281,31 @@ export default function Home() {
           border: 1px solid currentColor;
           border-radius: 2px;
         }
+
+        /* Mobile: stack stats grid 2x2 without divide-x visual bleed */
+        @media (max-width: 767px) {
+          .stats-grid > div {
+            border-left: none !important;
+          }
+        }
       `}</style>
 
       <div className="font-body" style={{ background: "var(--cream)", color: "var(--ink)" }}>
 
         {/* ========== HERO ========== */}
-        <section className="max-w-7xl mx-auto px-6 pt-28 pb-20 relative overflow-hidden">
-          {/* Decorative ruled lines */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-24 sm:pt-28 pb-16 sm:pb-20 relative overflow-hidden">
           <div className="absolute inset-0 ruled-line opacity-40 pointer-events-none" />
 
-          {/* Large decorative letter */}
-          <div className="absolute -top-8 -right-8 font-display font-black text-[22vw] leading-none text-stroke opacity-5 pointer-events-none select-none" style={{ WebkitTextStroke: "2px #111" }}>AI</div>
+          {/* Decorative AI letters — smaller on mobile */}
+          <div
+            className="absolute -top-8 -right-8 font-display font-black leading-none text-stroke opacity-5 pointer-events-none select-none"
+            style={{ fontSize: "clamp(14vw, 22vw, 22vw)", WebkitTextStroke: "2px #111" }}
+          >
+            AI
+          </div>
 
-          <div className="relative grid md:grid-cols-2 gap-16 items-center">
+          <div className="relative grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+            {/* Text side */}
             <div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
                 <span className="tag-pill" style={{ color: "var(--ink)", borderColor: "var(--ink)" }}>
@@ -344,7 +318,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.6 }}
                 className="font-display font-black mt-6 mb-6 leading-[1.05]"
-                style={{ fontSize: "clamp(3rem, 6vw, 5.5rem)", color: "var(--ink)" }}
+                style={{ fontSize: "clamp(2.6rem, 7vw, 5.5rem)", color: "var(--ink)" }}
               >
                 Discover<br />
                 <span style={{ color: "var(--accent-dark)", fontStyle: "italic" }}>Your Future</span><br />
@@ -366,11 +340,11 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="flex gap-4 flex-wrap"
+                className="flex gap-3 sm:gap-4 flex-wrap"
               >
                 <Link
                   href="/prediction"
-                  className="font-mono text-sm tracking-wide px-7 py-3.5 transition-all"
+                  className="font-mono text-xs sm:text-sm tracking-wide px-5 sm:px-7 py-3 sm:py-3.5 transition-all"
                   style={{
                     background: "var(--ink)",
                     color: "var(--cream)",
@@ -384,7 +358,7 @@ export default function Home() {
                 </Link>
                 <Link
                   href="/register"
-                  className="font-mono text-sm tracking-wide px-7 py-3.5 transition-all"
+                  className="font-mono text-xs sm:text-sm tracking-wide px-5 sm:px-7 py-3 sm:py-3.5 transition-all"
                   style={{
                     background: "transparent",
                     color: "var(--ink)",
@@ -411,21 +385,19 @@ export default function Home() {
               </motion.p>
             </div>
 
-            {/* Hero Illustration */}
+            {/* Hero Illustration — hidden on small mobile, shown md+ (or full width below hero on small) */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.7 }}
-              className="relative"
+              className="relative mt-8 md:mt-0"
             >
-              <div className="aspect-square max-w-md mx-auto relative">
-                {/* Decorative border frame */}
-                <div className="absolute inset-0 border-2 translate-x-4 translate-y-4" style={{ borderColor: "var(--accent)" }}/>
+              <div className="aspect-square max-w-xs sm:max-w-sm md:max-w-md mx-auto relative">
+                <div className="absolute inset-0 border-2 translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4" style={{ borderColor: "var(--accent)" }}/>
                 <div className="absolute inset-0 border-2 bg-white" style={{ borderColor: "var(--ink)" }}>
                   <BrainCircuitIllustration />
                 </div>
-                {/* Tag */}
-                <div className="absolute -bottom-5 -left-5 px-4 py-2" style={{ background: "var(--ink)", color: "var(--cream)" }}>
+                <div className="absolute -bottom-4 -left-4 sm:-bottom-5 sm:-left-5 px-3 sm:px-4 py-1.5 sm:py-2" style={{ background: "var(--ink)", color: "var(--cream)" }}>
                   <span className="font-mono text-xs tracking-widest">NEURAL MATCHING</span>
                 </div>
               </div>
@@ -434,8 +406,8 @@ export default function Home() {
         </section>
 
         {/* ========== STATS ========== */}
-        <section style={{ background: "var(--ink)", color: "var(--cream)" }} className="py-16">
-          <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+        <section style={{ background: "var(--ink)", color: "var(--cream)" }} className="py-12 sm:py-16">
+          <div className="stats-grid max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
             {(
               [["10K+", "Students Guided"], ["95%", "Prediction Accuracy"], ["200+", "Career Paths Mapped"], ["24/7", "AI Availability"]] as [string,string][]
             ).map(([num, label], i) => (
@@ -444,9 +416,9 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="px-8 py-6 text-center"
+                className="px-4 sm:px-8 py-6 text-center"
               >
-                <div className="font-display font-black text-5xl mb-2" style={{ color: "var(--accent)" }}>{num}</div>
+                <div className="font-display font-black text-3xl sm:text-5xl mb-2" style={{ color: "var(--accent)" }}>{num}</div>
                 <div className="font-mono text-xs tracking-widest" style={{ color: "#888", textTransform: "uppercase" }}>{label}</div>
               </motion.div>
             ))}
@@ -457,16 +429,16 @@ export default function Home() {
         <MarqueeBar />
 
         {/* ========== HOW IT WORKS ========== */}
-        <section className="max-w-7xl mx-auto px-6 py-28">
-          <div className="mb-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-28">
+          <div className="mb-12 sm:mb-20">
             <span className="font-mono text-xs tracking-widest uppercase" style={{ color: "var(--accent-dark)" }}>— Process</span>
-            <h2 className="font-display font-black text-5xl md:text-6xl mt-3" style={{ color: "var(--ink)" }}>
+            <h2 className="font-display font-black text-4xl sm:text-5xl md:text-6xl mt-3" style={{ color: "var(--ink)" }}>
               Three Steps to Your<br />
               <span style={{ fontStyle: "italic" }}>Dream Career.</span>
             </h2>
           </div>
 
-          <div className="space-y-24">
+          <div className="space-y-16 sm:space-y-24">
             {steps.map((s, i) => (
               <motion.div
                 key={i}
@@ -474,20 +446,20 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className={`grid md:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}
+                className={`grid md:grid-cols-2 gap-8 md:gap-12 items-center ${i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}
               >
                 {/* Text */}
                 <div>
-                  <div className="font-display font-black text-8xl leading-none mb-6" style={{ color: "var(--accent)", opacity: 0.4 }}>{s.step}</div>
-                  <h3 className="font-display font-bold text-3xl mb-4" style={{ color: "var(--ink)" }}>{s.title}</h3>
+                  <div className="font-display font-black text-7xl sm:text-8xl leading-none mb-4 sm:mb-6" style={{ color: "var(--accent)", opacity: 0.4 }}>{s.step}</div>
+                  <h3 className="font-display font-bold text-2xl sm:text-3xl mb-3 sm:mb-4" style={{ color: "var(--ink)" }}>{s.title}</h3>
                   <p className="text-base leading-relaxed" style={{ color: "var(--warm-gray)", fontWeight: 300, maxWidth: "36ch" }}>{s.desc}</p>
-                  <div className="mt-8 h-px" style={{ background: "var(--accent)", maxWidth: "200px" }}/>
+                  <div className="mt-6 sm:mt-8 h-px" style={{ background: "var(--accent)", maxWidth: "200px" }}/>
                 </div>
                 {/* Illustration */}
                 <div className="relative">
-                  <div className="absolute inset-0 translate-x-3 translate-y-3 border-2" style={{ borderColor: "var(--accent)" }}/>
-                  <div className="relative border-2 p-6 bg-white" style={{ borderColor: "var(--ink)" }}>
-                    <div className="h-64">{s.illustration}</div>
+                  <div className="absolute inset-0 translate-x-2 translate-y-2 sm:translate-x-3 sm:translate-y-3 border-2" style={{ borderColor: "var(--accent)" }}/>
+                  <div className="relative border-2 p-4 sm:p-6 bg-white" style={{ borderColor: "var(--ink)" }}>
+                    <div className="h-52 sm:h-64">{s.illustration}</div>
                   </div>
                 </div>
               </motion.div>
@@ -496,17 +468,17 @@ export default function Home() {
         </section>
 
         {/* ========== FEATURES ========== */}
-        <section style={{ background: "var(--ink)" }} className="py-24">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-16">
+        <section style={{ background: "var(--ink)" }} className="py-16 sm:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="mb-12 sm:mb-16">
               <span className="font-mono text-xs tracking-widest uppercase" style={{ color: "var(--accent)" }}>— Features</span>
-              <h2 className="font-display font-black text-5xl mt-3" style={{ color: "var(--cream)" }}>
+              <h2 className="font-display font-black text-4xl sm:text-5xl mt-3" style={{ color: "var(--cream)" }}>
                 Everything You Need<br/>
                 <span style={{ color: "var(--accent)", fontStyle: "italic" }}>to Succeed.</span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-px" style={{ background: "#333" }}>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-px" style={{ background: "#333" }}>
               {features.map((f, i) => (
                 <motion.div
                   key={i}
@@ -515,11 +487,11 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
                   whileHover={{ background: "#1a1a1a" } as any}
-                  className="p-8 transition-colors"
+                  className="p-6 sm:p-8 transition-colors"
                   style={{ background: "var(--ink-light)" }}
                 >
-                  <div className="mb-5" style={{ color: "var(--accent)" }}>{f.icon}</div>
-                  <h3 className="font-display font-bold text-xl mb-3" style={{ color: "var(--cream)" }}>{f.title}</h3>
+                  <div className="mb-4 sm:mb-5" style={{ color: "var(--accent)" }}>{f.icon}</div>
+                  <h3 className="font-display font-bold text-lg sm:text-xl mb-2 sm:mb-3" style={{ color: "var(--cream)" }}>{f.title}</h3>
                   <p className="text-sm leading-relaxed" style={{ color: "#888", fontWeight: 300 }}>{f.desc}</p>
                 </motion.div>
               ))}
@@ -528,16 +500,16 @@ export default function Home() {
         </section>
 
         {/* ========== TRENDING CAREERS ========== */}
-        <section className="max-w-7xl mx-auto px-6 py-24">
-          <div className="mb-16">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+          <div className="mb-12 sm:mb-16">
             <span className="font-mono text-xs tracking-widest uppercase" style={{ color: "var(--accent-dark)" }}>— Trending Now</span>
-            <h2 className="font-display font-black text-5xl mt-3" style={{ color: "var(--ink)" }}>
+            <h2 className="font-display font-black text-4xl sm:text-5xl mt-3" style={{ color: "var(--ink)" }}>
               High-Growth Career<br />
               <span style={{ fontStyle: "italic" }}>Paths in 2025.</span>
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             {careers.map((c, i) => (
               <motion.div
                 key={i}
@@ -546,15 +518,15 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 whileHover={{ scale: 1.03 }}
-                className="flex items-center gap-6 p-6 border-2 transition-all cursor-pointer group"
+                className="flex items-center gap-4 sm:gap-6 p-5 sm:p-6 border-2 transition-all cursor-pointer group"
                 style={{ borderColor: "var(--ink)", background: "white" }}
                 onMouseEnter={e => { e.currentTarget.style.background = "var(--ink)"; e.currentTarget.style.color = "var(--cream)"; }}
                 onMouseLeave={e => { e.currentTarget.style.background = "white"; e.currentTarget.style.color = "var(--ink)"; }}
               >
-                <div className="transition-colors">{c.icon}</div>
+                <div className="transition-colors shrink-0">{c.icon}</div>
                 <div>
-                  <h3 className="font-display font-bold text-lg">{c.title}</h3>
-                  <p className="font-mono text-sm mt-1" style={{ color: "var(--accent-dark)", letterSpacing: "0.06em" }}>↑ {c.growth} GROWTH</p>
+                  <h3 className="font-display font-bold text-base sm:text-lg">{c.title}</h3>
+                  <p className="font-mono text-xs sm:text-sm mt-1" style={{ color: "var(--accent-dark)", letterSpacing: "0.06em" }}>↑ {c.growth} GROWTH</p>
                 </div>
               </motion.div>
             ))}
@@ -562,17 +534,17 @@ export default function Home() {
         </section>
 
         {/* ========== TESTIMONIALS ========== */}
-        <section style={{ background: "#f0e8d8" }} className="py-24">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-16">
+        <section style={{ background: "#f0e8d8" }} className="py-16 sm:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="mb-12 sm:mb-16">
               <span className="font-mono text-xs tracking-widest uppercase" style={{ color: "var(--accent-dark)" }}>— Success Stories</span>
-              <h2 className="font-display font-black text-5xl mt-3" style={{ color: "var(--ink)" }}>
+              <h2 className="font-display font-black text-4xl sm:text-5xl mt-3" style={{ color: "var(--ink)" }}>
                 Students Who Found<br />
                 <span style={{ fontStyle: "italic" }}>Their Path.</span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
               {testimonials.map((t, i) => (
                 <motion.div
                   key={i}
@@ -580,16 +552,15 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15 }}
-                  className="p-8 border-2 bg-white relative"
+                  className="p-6 sm:p-8 border-2 bg-white relative"
                   style={{ borderColor: "var(--ink)" }}
                 >
-                  {/* Large quote mark */}
                   <div className="font-display font-black text-8xl leading-none absolute top-2 right-6 opacity-10" style={{ color: "var(--ink)" }}>"</div>
-                  <p className="text-sm leading-relaxed mb-8 relative" style={{ color: "#555", fontWeight: 300, fontStyle: "italic" }}>
+                  <p className="text-sm leading-relaxed mb-6 sm:mb-8 relative" style={{ color: "#555", fontWeight: 300, fontStyle: "italic" }}>
                     "{t.text}"
                   </p>
-                  <div className="flex items-center gap-4 pt-6 border-t" style={{ borderColor: "var(--accent)" }}>
-                    <div className="w-11 h-11 flex items-center justify-center font-mono text-sm font-bold" style={{ background: "var(--ink)", color: "var(--cream)" }}>
+                  <div className="flex items-center gap-4 pt-4 sm:pt-6 border-t" style={{ borderColor: "var(--accent)" }}>
+                    <div className="w-10 h-10 sm:w-11 sm:h-11 shrink-0 flex items-center justify-center font-mono text-sm font-bold" style={{ background: "var(--ink)", color: "var(--cream)" }}>
                       {t.initials}
                     </div>
                     <div>
@@ -604,10 +575,10 @@ export default function Home() {
         </section>
 
         {/* ========== FAQ ========== */}
-        <section className="max-w-4xl mx-auto px-6 py-24">
-          <div className="mb-14">
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+          <div className="mb-10 sm:mb-14">
             <span className="font-mono text-xs tracking-widest uppercase" style={{ color: "var(--accent-dark)" }}>— FAQ</span>
-            <h2 className="font-display font-black text-5xl mt-3" style={{ color: "var(--ink)" }}>Common Questions.</h2>
+            <h2 className="font-display font-black text-4xl sm:text-5xl mt-3" style={{ color: "var(--ink)" }}>Common Questions.</h2>
           </div>
 
           {faqs.map((faq, i) => (
@@ -617,13 +588,13 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="mb-0 border-t-2 py-8"
+              className="border-t-2 py-6 sm:py-8"
               style={{ borderColor: "var(--ink)" }}
             >
-              <div className="flex gap-6">
+              <div className="flex gap-4 sm:gap-6">
                 <span className="font-mono text-sm font-bold shrink-0 mt-1" style={{ color: "var(--accent-dark)" }}>0{i + 1}</span>
                 <div>
-                  <h4 className="font-display font-bold text-xl mb-3" style={{ color: "var(--ink)" }}>{faq.q}</h4>
+                  <h4 className="font-display font-bold text-lg sm:text-xl mb-2 sm:mb-3" style={{ color: "var(--ink)" }}>{faq.q}</h4>
                   <p className="text-sm leading-relaxed" style={{ color: "var(--warm-gray)", fontWeight: 300, maxWidth: "60ch" }}>{faq.a}</p>
                 </div>
               </div>
@@ -633,31 +604,30 @@ export default function Home() {
         </section>
 
         {/* ========== CTA ========== */}
-        <section style={{ background: "var(--ink)" }} className="py-28 relative overflow-hidden">
-          {/* Big background text */}
+        <section style={{ background: "var(--ink)" }} className="py-20 sm:py-28 relative overflow-hidden">
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-            <span className="font-display font-black text-[25vw] leading-none opacity-5" style={{ color: "var(--cream)" }}>GO</span>
+            <span className="font-display font-black leading-none opacity-5" style={{ fontSize: "clamp(20vw, 30vw, 30vw)", color: "var(--cream)" }}>GO</span>
           </div>
-          <div className="relative max-w-4xl mx-auto px-6 text-center">
+          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <span className="font-mono text-xs tracking-widest uppercase" style={{ color: "var(--accent)" }}>— Start Now</span>
-            <h2 className="font-display font-black mt-4 mb-6 leading-tight" style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", color: "var(--cream)" }}>
+            <h2 className="font-display font-black mt-4 mb-6 leading-tight" style={{ fontSize: "clamp(2rem, 6vw, 5rem)", color: "var(--cream)" }}>
               Your Future Career<br />
               <span style={{ color: "var(--accent)", fontStyle: "italic" }}>Starts Here.</span>
             </h2>
-            <p className="mb-12 text-base" style={{ color: "#888", fontWeight: 300, maxWidth: "42ch", margin: "0 auto 3rem" }}>
+            <p className="mb-10 sm:mb-12 text-base mx-auto" style={{ color: "#888", fontWeight: 300, maxWidth: "42ch" }}>
               Join 10,000+ students who used AI to find direction, build skills, and land meaningful careers.
             </p>
-            <div className="flex justify-center gap-6 flex-wrap">
+            <div className="flex justify-center gap-4 sm:gap-6 flex-wrap">
               <Link
                 href="/prediction"
-                className="font-mono text-sm tracking-wide px-8 py-4 transition-all"
+                className="font-mono text-xs sm:text-sm tracking-wide px-6 sm:px-8 py-3.5 sm:py-4 transition-all"
                 style={{ background: "var(--accent)", color: "var(--ink)", border: "2px solid var(--accent)", letterSpacing: "0.08em" }}
               >
                 TRY FREE PREDICTION →
               </Link>
               <Link
                 href="/register"
-                className="font-mono text-sm tracking-wide px-8 py-4 transition-all"
+                className="font-mono text-xs sm:text-sm tracking-wide px-6 sm:px-8 py-3.5 sm:py-4 transition-all"
                 style={{ background: "transparent", color: "var(--cream)", border: "2px solid #444", letterSpacing: "0.08em" }}
               >
                 CREATE ACCOUNT
