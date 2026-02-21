@@ -3,3 +3,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root {
+  --primary: #0f172a;      /* dark blue */
+  --secondary: #1d4ed8;    /* blue */
+  --accent: #2563eb;       /* lighter blue */
+  --bg: #f8fafc;           /* soft white */
+  --text: #0b0b0b;         /* black */
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}

@@ -7,6 +7,7 @@ const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const predictionRoutes = require("./routes/predictionRoutes");
+const aiRoutes = require("./routes/aiRoutes");
 
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/prediction", predictionRoutes);
+app.use("/api/ai", aiRoutes);
 
 // Error Middleware
 app.use(notFound);
@@ -33,6 +35,4 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () =>
-  console.log(`🔥 Server running on port ${PORT}`)
-);
+app.listen(PORT, () => console.log(`🔥 Server running on port ${PORT}`));

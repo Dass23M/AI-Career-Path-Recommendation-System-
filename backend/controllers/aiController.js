@@ -1,27 +1,41 @@
 const axios = require("axios");
+const Prediction = require("../models/Prediction");
 
 // POST /api/ai/predict
 exports.predictCareer = async (req, res) => {
   try {
-    // data coming from frontend
-    const userData = req.body;
+    const { age, education, skills, interests } = req.body;
 
-    // send request to Flask AI service
-const response = await axios.post(
-  "http://localhost:5001/predict",
-  {
-    age: req.body.age,
-    education: req.body.education,
-    skills: req.body.skills,
-    interests: req.body.interests
-  }
-);
+    // 1️⃣ Call Flask AI service
+    const flaskResponse = await axios.post(
+      "http://localhost:5001/predict",
+      {
+        age,
+        education,
+        skills,
+        interests,
+      }
+    );
 
+    // Flask returns: { career: "Biostatistician" }
+    const careerResult = flaskResponse.data.career;
 
-    // return AI result to frontend
+    // 2️⃣ Save to MongoDB
+    const newPrediction = await Prediction.create({
+      user: req.user.id, // requires auth middleware
+      age,
+      education,
+      skills,
+      interests,
+      career: careerResult,
+    });
+
+    // 3️⃣ Send clean response to frontend
     res.status(200).json({
       success: true,
-      prediction: response.data,
+      prediction: {
+        career: careerResult,
+      },
     });
 
   } catch (error) {

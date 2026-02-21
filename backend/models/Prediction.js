@@ -7,18 +7,28 @@ const predictionSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    inputData: {
-      type: Object,
+    age: {
+      type: Number,
       required: true,
     },
-    result: {
-      type: Object,
+    education: {
+      type: String,
+      required: true,
+    },
+    skills: {
+      type: String,
+      required: true,
+    },
+    interests: {
+      type: String,
+      required: true,
+    },
+    career: {
+      type: String,
       required: true,
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("Prediction", predictionSchema);
