@@ -2,7 +2,6 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const generateToken = require("../utils/generateToken");
 
-
 // ===============================
 // @desc    Register User
 // @route   POST /api/auth/register
@@ -21,7 +20,6 @@ exports.registerUser = async (req, res) => {
 
     // Check existing user
     const userExists = await User.findOne({ email });
-
     if (userExists) {
       return res.status(400).json({
         success: false,
@@ -39,6 +37,17 @@ exports.registerUser = async (req, res) => {
       password: hashedPassword,
     });
 
+    // Generate token
+    const token = generateToken(user._id);
+
+    // Set JWT cookie (for mobile / cross-device)
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "none", // allows cross-device login
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+    });
+
     // Response
     res.status(201).json({
       success: true,
@@ -46,7 +55,7 @@ exports.registerUser = async (req, res) => {
       data: {
         _id: user._id,
         email: user.email,
-        token: generateToken(user._id),
+        token, // keep sending token for localStorage usage
       },
     });
 
@@ -58,7 +67,6 @@ exports.registerUser = async (req, res) => {
     });
   }
 };
-
 
 // ===============================
 // @desc    Login User
@@ -78,7 +86,6 @@ exports.loginUser = async (req, res) => {
 
     // Find user
     const user = await User.findOne({ email });
-
     if (!user) {
       return res.status(401).json({
         success: false,
@@ -88,13 +95,23 @@ exports.loginUser = async (req, res) => {
 
     // Compare password
     const isMatch = await bcrypt.compare(password, user.password);
-
     if (!isMatch) {
       return res.status(401).json({
         success: false,
         message: "Invalid email or password",
       });
     }
+
+    // Generate token
+    const token = generateToken(user._id);
+
+    // Set JWT cookie
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "none", // allows cross-device login
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+    });
 
     // Success response
     res.status(200).json({
@@ -103,7 +120,7 @@ exports.loginUser = async (req, res) => {
       data: {
         _id: user._id,
         email: user.email,
-        token: generateToken(user._id),
+        token, // keep sending token for localStorage usage
       },
     });
 
