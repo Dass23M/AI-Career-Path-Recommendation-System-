@@ -1,11 +1,10 @@
-// services/authService.ts
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: `https://${process.env.NEXT_PUBLIC_API_URL}/api`, // deployed API URL
+  baseURL: "http://localhost:5000/api",
 });
 
-// AUTO attach token
+// ✅ AUTO attach token
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
@@ -16,8 +15,11 @@ API.interceptors.request.use((config) => {
   return config;
 });
 
-// Auth APIs
-export const loginUser = (data: any) => API.post("/auth/login", data);
-export const registerUser = (data: any) => API.post("/auth/register", data);
+// auth APIs
+export const loginUser = (data: any) =>
+  API.post("/auth/login", data);
+
+export const registerUser = (data: any) =>
+  API.post("/auth/register", data);
 
 export default API;
