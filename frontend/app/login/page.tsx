@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useContext } from "react";
+import { useState, useContext, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { loginUser } from "@/services/authService";
@@ -62,13 +62,13 @@ const LoginIllustration = () => (
   </svg>
 );
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { login }: any = useContext(AuthContext);
+  const { login } = useContext(AuthContext) as any;
 
-  // ✅ get redirect url (from ProtectedRoute)
-  const redirect = searchParams.get("redirect") || "/";
+  // Safe access — during build / initial render it will be null
+  const redirect = searchParams?.get("redirect") || "/";
 
   const [formData, setFormData] = useState({
     email: "",
@@ -89,12 +89,9 @@ export default function LoginPage() {
 
     try {
       const res = await loginUser(formData);
-
-      // ✅ save token to context
       login(res.data.data.token);
-
-      // ✅ redirect to intended page or home
       router.push(redirect);
+      // Optional: router.refresh(); // if you want to re-fetch server data after login
     } catch (err: any) {
       setError(err.response?.data?.message || "Invalid email or password");
     } finally {
@@ -133,7 +130,7 @@ export default function LoginPage() {
       <div className="min-h-screen" style={{ background: "#f5f0e8" }}>
         <div className="max-w-6xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-16 items-center min-h-screen">
           
-          {/* LEFT */}
+          {/* LEFT - illustration (static-friendly) */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -154,7 +151,7 @@ export default function LoginPage() {
             </div>
           </motion.div>
 
-          {/* RIGHT */}
+          {/* RIGHT - form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -228,5 +225,19 @@ export default function LoginPage() {
         </div>
       </div>
     </>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-[#f5f0e8] text-gray-600">
+          Loading sign-in page...
+        </div>
+      }
+    >
+      <LoginContent />
+    </Suspense>
   );
 }
