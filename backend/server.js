@@ -19,7 +19,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:3000", // for local frontend dev
-    "https://ai-career-path-recommendation-syste.vercel.app", // your deployed frontend
+    "ai-career-path-recommendation-system-f7v3qjfqe.vercel.app", // your deployed frontend
   ],
   credentials: true, // allow cookies if using JWT in cookies
 }));
