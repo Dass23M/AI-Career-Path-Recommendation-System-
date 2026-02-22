@@ -15,17 +15,7 @@ connectDB();
 
 const app = express();
 
-// ✅ Configure CORS properly
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000", // for local frontend dev
-      "ai-career-path-recommendation-system-fl324jzi3.vercel.app", // your deployed frontend
-    ],
-    credentials: true, // allow cookies if using JWT in cookies
-  }),
-);
-
+app.use(cors());
 app.use(express.json());
 
 // Root Test Route

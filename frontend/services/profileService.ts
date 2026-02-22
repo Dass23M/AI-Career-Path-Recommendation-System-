@@ -2,11 +2,21 @@ import axios from "axios";
 
 const API = process.env.NEXT_PUBLIC_API_URL;
 
-const authHeader = () => ({
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem("token")}`,
-  },
-});
+// ✅ safer token getter
+const getToken = () => {
+  if (typeof window === "undefined") return null;
+  return localStorage.getItem("token");
+};
+
+const authHeader = () => {
+  const token = getToken();
+
+  return {
+    headers: {
+      Authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+};
 
 // GET my profile
 export const getMyProfile = () => {
