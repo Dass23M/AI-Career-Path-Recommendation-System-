@@ -20,7 +20,7 @@ app.use(
   cors({
     origin: [
       // for local frontend dev
-      "ai-career-path-recommendation-system-kf4hg52ne.vercel.app", // your deployed frontend
+      "ai-career-path-recommendation-system-fl324jzi3.vercel.app", // your deployed frontend
     ],
     credentials: true, // allow cookies if using JWT in cookies
   }),
