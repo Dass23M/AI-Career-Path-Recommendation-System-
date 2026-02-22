@@ -1,21 +1,14 @@
 "use client";
 
-import { createContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useState, useEffect } from "react";
 
 interface AuthUser {
   token: string;
 }
 
-interface AuthContextType {
-  user: AuthUser | null;
-  login: (token: string) => void;
-  logout: () => void;
-  loading: boolean;
-}
+export const AuthContext = createContext<any>(null);
 
-export const AuthContext = createContext<AuthContextType | null>(null);
-
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
+export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
 
