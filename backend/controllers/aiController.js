@@ -4,7 +4,7 @@ const Prediction = require("../models/Prediction");
 // POST /api/ai/predict
 exports.predictCareer = async (req, res) => {
   try {
-    const { education, skills, interests } = req.body;
+    let { education, skills, interests } = req.body;
 
     if (!education || !skills || !interests) {
       return res.status(400).json({
@@ -13,15 +13,31 @@ exports.predictCareer = async (req, res) => {
       });
     }
 
+    // Ensure skills and interests are strings (if arrays were passed)
+    if (Array.isArray(skills)) skills = skills.join(", ");
+    if (Array.isArray(interests)) interests = interests.join(", ");
+
     // 1️⃣ Call Flask AI service
-    const flaskResponse = await axios.post(
-      "http://localhost:5001/predict",
-      {
-        education,
-        skills,
-        interests,
-      }
-    );
+    const aiServiceUrl = process.env.AI_SERVICE_URL || "http://localhost:5001";
+    
+    let flaskResponse;
+    try {
+      flaskResponse = await axios.post(
+        `${aiServiceUrl}/predict`,
+        {
+          education,
+          skills,
+          interests,
+        }
+      );
+    } catch (flaskError) {
+      console.error("Flask AI Service Connection Error:", flaskError.message);
+      return res.status(500).json({
+        success: false,
+        message: "AI service connection failed. Please ensure the AI service is running at " + aiServiceUrl,
+        error: flaskError.message
+      });
+    }
 
     // Flask returns: { career: "Data Scientist" }
     const careerResult = flaskResponse.data.career;
@@ -34,13 +50,23 @@ exports.predictCareer = async (req, res) => {
     }
 
     // 2️⃣ Save to MongoDB
-    await Prediction.create({
-      user: req.user.id,
-      education,
-      skills,
-      interests,
-      career: careerResult,
-    });
+    try {
+      if (!req.user) {
+        throw new Error("User not found on request object");
+      }
+
+      await Prediction.create({
+        user: req.user._id || req.user.id,
+        education,
+        skills,
+        interests,
+        career: careerResult,
+      });
+    } catch (dbError) {
+      console.error("Database Save Error:", dbError.message);
+      // We still return the prediction even if saving fails, or maybe we shouldn't? 
+      // Let's at least log it.
+    }
 
     // 3️⃣ Send clean response to frontend
     res.status(200).json({
@@ -51,11 +77,12 @@ exports.predictCareer = async (req, res) => {
     });
 
   } catch (error) {
-    console.error("AI Service Error:", error.message);
+    console.error("Global AI Controller Error:", error.message);
 
     res.status(500).json({
       success: false,
-      message: "AI prediction failed. Please ensure the AI service is running.",
+      message: "AI prediction failed due to an internal error.",
+      error: error.message
     });
   }
 };

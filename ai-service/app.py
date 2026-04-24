@@ -40,6 +40,12 @@ def predict():
         if not education or not skills or not interests:
             return jsonify({"error": "Missing required fields: education, skills, interests"}), 400
 
+        # Convert lists to comma-separated strings if needed
+        if isinstance(skills, list):
+            skills = ", ".join(skills)
+        if isinstance(interests, list):
+            interests = ", ".join(interests)
+
         # Build input DataFrame matching training feature order
         input_data = pd.DataFrame([{
             "Education": education,
