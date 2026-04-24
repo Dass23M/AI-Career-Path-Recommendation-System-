@@ -246,7 +246,7 @@ export default function Home() {
           --cream: #f5f0e8;
           --ink: #0a0a0a;
           --ink-light: #222;
-          --warm-gray: #888;
+          --warm-gray: #595959;
           --accent: #c8b89a;
           --accent-dark: #9e8a6e;
         }
@@ -419,7 +419,7 @@ export default function Home() {
                 className="px-4 sm:px-8 py-6 text-center"
               >
                 <div className="font-display font-black text-3xl sm:text-5xl mb-2" style={{ color: "var(--accent)" }}>{num}</div>
-                <div className="font-mono text-xs tracking-widest" style={{ color: "#888", textTransform: "uppercase" }}>{label}</div>
+                <div className="font-mono text-xs tracking-widest"style={{ color: "#a0a0a0", textTransform: "uppercase" }}>{label}</div>
               </motion.div>
             ))}
           </div>
@@ -492,7 +492,7 @@ export default function Home() {
                 >
                   <div className="mb-4 sm:mb-5" style={{ color: "var(--accent)" }}>{f.icon}</div>
                   <h3 className="font-display font-bold text-lg sm:text-xl mb-2 sm:mb-3" style={{ color: "var(--cream)" }}>{f.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "#888", fontWeight: 300 }}>{f.desc}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "#595959", fontWeight: 300 }}>{f.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -594,7 +594,7 @@ export default function Home() {
               <div className="flex gap-4 sm:gap-6">
                 <span className="font-mono text-sm font-bold shrink-0 mt-1" style={{ color: "var(--accent-dark)" }}>0{i + 1}</span>
                 <div>
-                  <h4 className="font-display font-bold text-lg sm:text-xl mb-2 sm:mb-3" style={{ color: "var(--ink)" }}>{faq.q}</h4>
+                  <h3 className="font-display font-bold text-lg sm:text-xl mb-2 sm:mb-3" style={{ color: "var(--ink)" }}>{faq.q}</h3>
                   <p className="text-sm leading-relaxed" style={{ color: "var(--warm-gray)", fontWeight: 300, maxWidth: "60ch" }}>{faq.a}</p>
                 </div>
               </div>

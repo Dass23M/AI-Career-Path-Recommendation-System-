@@ -7,10 +7,6 @@ const predictionSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    age: {
-      type: Number,
-      required: true,
-    },
     education: {
       type: String,
       required: true,

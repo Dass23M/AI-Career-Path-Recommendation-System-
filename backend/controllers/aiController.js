@@ -4,26 +4,38 @@ const Prediction = require("../models/Prediction");
 // POST /api/ai/predict
 exports.predictCareer = async (req, res) => {
   try {
-    const { age, education, skills, interests } = req.body;
+    const { education, skills, interests } = req.body;
+
+    if (!education || !skills || !interests) {
+      return res.status(400).json({
+        success: false,
+        message: "Missing required fields: education, skills, interests",
+      });
+    }
 
     // 1️⃣ Call Flask AI service
     const flaskResponse = await axios.post(
       "http://localhost:5001/predict",
       {
-        age,
         education,
         skills,
         interests,
       }
     );
 
-    // Flask returns: { career: "Biostatistician" }
+    // Flask returns: { career: "Data Scientist" }
     const careerResult = flaskResponse.data.career;
 
+    if (!careerResult) {
+      return res.status(500).json({
+        success: false,
+        message: "AI service returned no prediction",
+      });
+    }
+
     // 2️⃣ Save to MongoDB
-    const newPrediction = await Prediction.create({
-      user: req.user.id, // requires auth middleware
-      age,
+    await Prediction.create({
+      user: req.user.id,
       education,
       skills,
       interests,
@@ -43,7 +55,7 @@ exports.predictCareer = async (req, res) => {
 
     res.status(500).json({
       success: false,
-      message: "AI prediction failed",
+      message: "AI prediction failed. Please ensure the AI service is running.",
     });
   }
 };

@@ -3,7 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AuthProvider } from "@/context/AuthContext";
-import MarqueeBar from "@/components/Marqueebar";
+
 
 export const metadata = {
   title: "AI Career Prediction Platform",

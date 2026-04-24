@@ -309,9 +309,9 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  whileHover={{ background: "#111" } as any}
+                  whileHover={{ backgroundColor: "#111" }}
                   className="p-6 sm:p-8 transition-colors"
-                  style={{ background: "#1a1a1a" }}
+                  style={{ backgroundColor: "#1a1a1a" }}
                 >
                   <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900, fontSize: "3.5rem", color: "#c8b89a", opacity: 0.25, lineHeight: 1, marginBottom: "0.5rem" }}>{v.index}</div>
                   <h3 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1.25rem", color: "#f5f0e8", marginBottom: "0.75rem" }}>{v.title}</h3>

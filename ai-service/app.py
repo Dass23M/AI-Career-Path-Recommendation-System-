@@ -2,6 +2,9 @@ from flask import Flask, request, jsonify
 import joblib
 import pandas as pd
 from flask_cors import CORS
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 app = Flask(__name__)
 CORS(app)
@@ -29,16 +32,19 @@ def predict():
     try:
         data = request.json
 
-        age = data.get("age")
         education = data.get("education")
         skills = data.get("skills")
         interests = data.get("interests")
 
+        # Validate required fields
+        if not education or not skills or not interests:
+            return jsonify({"error": "Missing required fields: education, skills, interests"}), 400
+
+        # Build input DataFrame matching training feature order
         input_data = pd.DataFrame([{
-            "Age": age,
             "Education": education,
             "Skills": skills,
-            "Interests": interests
+            "Interests": interests,
         }])
 
         prediction = model.predict(input_data)[0]
@@ -48,8 +54,8 @@ def predict():
         })
 
     except Exception as e:
-        print("Prediction Error:", str(e))
-        return jsonify({"error": str(e)}), 400
+        logging.error(f"Prediction Error: {str(e)}", exc_info=True)
+        return jsonify({"error": "An internal error occurred during prediction processing. Please try again later."}), 500
 
 
 if __name__ == "__main__":
