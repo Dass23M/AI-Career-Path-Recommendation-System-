@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+
+  mongodb:
+    image: mongo
+    container_name: career_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./backend
+    container_name: career_backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+      - ai-service
+    env_file:
+      - .env
+
+  ai-service:
+    build: ./ai-service
+    container_name: career_ai_service
+    ports:
+      - "5001:5001"
+
+  frontend:
+    build: ./frontend
+    container_name: career_frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
