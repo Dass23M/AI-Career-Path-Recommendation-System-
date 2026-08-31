@@ -2,6 +2,7 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CookieBanner from "@/components/CookieBanner";
 import { AuthProvider } from "@/context/AuthContext";
 
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           
 
           <Footer />
+          <CookieBanner />
         </AuthProvider>
 
       </body>

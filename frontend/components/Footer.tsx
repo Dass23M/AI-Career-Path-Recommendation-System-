@@ -81,8 +81,6 @@ export default function Footer() {
               links={[
                 { label: "Career Prediction", href: "/prediction" },
                 { label: "Dashboard",         href: "/dashboard"  },
-                { label: "Skill Analysis",    href: "/"           },
-                { label: "Roadmaps",          href: "/"           },
               ]}
             />
 
@@ -90,18 +88,16 @@ export default function Footer() {
               title="Company"
               links={[
                 { label: "About",   href: "/about" },
-                { label: "Contact", href: "/"      },
-                { label: "Blog",    href: "/"      },
-                { label: "Careers", href: "/"      },
+                { label: "Contact", href: "/contact" },
               ]}
             />
 
             <FooterLinkGroup
               title="Legal"
               links={[
-                { label: "Privacy Policy",   href: "/" },
-                { label: "Terms of Service", href: "/" },
-                { label: "Cookie Policy",    href: "/" },
+                { label: "Privacy Policy",   href: "/privacy-policy" },
+                { label: "Terms of Service", href: "/terms-of-service" },
+                { label: "Cookie Policy",    href: "/cookie-policy" },
               ]}
             />
 
