@@ -14,3 +14,8 @@ export const saveProfile = (data: any) => {
 export const deleteProfile = () => {
   return API.delete("/profile");
 };
+
+// GET history
+export const getPredictionHistory = () => {
+  return API.get("/profile/history");
+};

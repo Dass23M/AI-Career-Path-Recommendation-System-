@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import Link from "next/link";
-import { getMyProfile, saveProfile, deleteProfile } from "@/services/profileService";
+import { getMyProfile, saveProfile, deleteProfile, getPredictionHistory } from "@/services/profileService";
 
 // ── Icons ──────────────────────────────────────────────
 const IconUser = () => (
@@ -153,22 +153,27 @@ const QuickActions = () => (
   </div>
 );
 
-// ── Recent Activity ────────────────────────────────────
-const RecentActivity = () => (
+// ── Prediction History ──────────────────────────────────
+const PredictionHistory = ({ history }: { history: any[] }) => (
   <div className="mt-6 border-t pt-6" style={{ borderColor: "#e8e0d0" }}>
-    <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#aaa", marginBottom: "0.75rem" }}>Recent Activity</p>
-    {[
-      { text: "Profile last updated", time: "Just now"   },
-      { text: "AI prediction run",    time: "2 days ago" },
-      { text: "Account created",      time: "This month" },
-    ].map((item, i) => (
-      <div key={i} className="flex items-center justify-between py-3 border-b" style={{ borderColor: "#f0ebe0" }}>
-        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8rem", fontWeight: 300, color: "#555" }}>{item.text}</span>
-        <span className="flex items-center gap-1.5" style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", color: "#bbb" }}>
-          <IconClock />{item.time}
-        </span>
-      </div>
-    ))}
+    <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#aaa", marginBottom: "0.75rem" }}>Prediction History</p>
+    {history.length === 0 ? (
+      <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.8rem", fontWeight: 300, color: "#888" }}>No predictions yet.</p>
+    ) : (
+      history.slice(0, 5).map((item, i) => (
+        <div key={i} className="py-3 border-b" style={{ borderColor: "#f0ebe0" }}>
+          <div className="flex items-center justify-between mb-1">
+            <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", fontWeight: 500, color: "#0a0a0a" }}>{item.career}</span>
+            <span className="flex items-center gap-1.5" style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", color: "#bbb" }}>
+              <IconClock /> {new Date(item.createdAt).toLocaleDateString()}
+            </span>
+          </div>
+          <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", fontWeight: 300, color: "#555" }}>
+            <span style={{ color: "#9e8a6e" }}>Skills:</span> {item.skills}
+          </div>
+        </div>
+      ))
+    )}
   </div>
 );
 
@@ -181,12 +186,17 @@ export default function ProfilePage() {
   const [saving,   setSaving]   = useState(false);
   const [message,  setMessage]  = useState<{ type: "success" | "error" | "delete"; text: string } | null>(null);
   const [activeField, setActiveField] = useState<string | null>(null);
+  const [history, setHistory] = useState<any[]>([]);
 
   useEffect(() => {
     (async () => {
       try {
-        const res  = await getMyProfile();
-        const data = res.data.data;
+        const [profileRes, historyRes] = await Promise.all([
+          getMyProfile(),
+          getPredictionHistory().catch(() => ({ data: { data: [] } })),
+        ]);
+        
+        const data = profileRes.data.data;
         setFormData({
           fullName:        data.fullName        || "",
           education:       data.education       || "",
@@ -194,6 +204,10 @@ export default function ProfilePage() {
           interests:       data.interests?.join(", ") || "",
           experienceLevel: data.experienceLevel || "beginner",
         });
+
+        if (historyRes.data?.data) {
+          setHistory(historyRes.data.data);
+        }
       } catch { /* no profile yet */ }
       finally  { setLoading(false); }
     })();
@@ -448,7 +462,7 @@ export default function ProfilePage() {
                 {/* Quick actions */}
                 <div className="border-2 bg-white p-6" style={{ borderColor: "#0a0a0a" }}>
                   <QuickActions />
-                  <RecentActivity />
+                  <PredictionHistory history={history} />
                 </div>
 
                 {/* Tip card */}

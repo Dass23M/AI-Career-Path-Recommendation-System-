@@ -5,6 +5,7 @@ const {
   createOrUpdateProfile,
   getMyProfile,
   deleteProfile,
+  getMyHistory,
 } = require("../controllers/profileController");
 
 const { protect } = require("../middleware/authMiddleware");
@@ -15,6 +16,9 @@ router.post("/", protect, createOrUpdateProfile);
 
 // Get Logged User Profile
 router.get("/me", protect, getMyProfile);
+
+// Get Prediction History
+router.get("/history", protect, getMyHistory);
 
 // Delete Profile
 router.delete("/", protect, deleteProfile);

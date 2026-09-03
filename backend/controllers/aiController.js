@@ -1,5 +1,6 @@
 const axios = require("axios");
 const Prediction = require("../models/Prediction");
+const Profile = require("../models/Profile");
 
 // POST /api/ai/predict
 exports.predictCareer = async (req, res) => {
@@ -65,6 +66,17 @@ exports.predictCareer = async (req, res) => {
         interests,
         career: careerResult,
       });
+
+      // Auto-update Profile with latest input
+      await Profile.findOneAndUpdate(
+        { user: req.user._id || req.user.id },
+        { 
+          education, 
+          skills: skills.split(",").map(s => s.trim()).filter(Boolean), 
+          interests: interests.split(",").map(s => s.trim()).filter(Boolean)
+        },
+        { new: true, upsert: true }
+      );
     } catch (dbError) {
       console.error("Database Save Error:", dbError.message);
       // We still return the prediction even if saving fails, or maybe we shouldn't? 

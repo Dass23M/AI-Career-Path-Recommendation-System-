@@ -1,4 +1,5 @@
 const Profile = require("../models/Profile");
+const Prediction = require("../models/Prediction");
 
 
 // ===============================
@@ -93,6 +94,27 @@ exports.deleteProfile = async (req, res) => {
     res.json({
       success: true,
       message: "Profile deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error: error.message,
+    });
+  }
+};
+
+// ===============================
+// Get Prediction History
+// GET /api/profile/history
+// ===============================
+exports.getMyHistory = async (req, res) => {
+  try {
+    const history = await Prediction.find({ user: req.user._id }).sort({ createdAt: -1 });
+
+    res.json({
+      success: true,
+      data: history,
     });
   } catch (error) {
     res.status(500).json({

@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Profile = require("../models/Profile");
 const bcrypt = require("bcryptjs");
 const generateToken = require("../utils/generateToken");
 
@@ -9,7 +10,7 @@ const generateToken = require("../utils/generateToken");
 // ===============================
 exports.registerUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
 
     // Validate input
     if (!email || !password) {
@@ -37,6 +38,16 @@ exports.registerUser = async (req, res) => {
     const user = await User.create({
       email,
       password: hashedPassword,
+    });
+
+    // Auto-create initial Profile
+    const defaultName = name || email.split("@")[0];
+    await Profile.create({
+      user: user._id,
+      fullName: defaultName,
+      education: "Not Specified",
+      skills: [],
+      interests: [],
     });
 
     // Response
