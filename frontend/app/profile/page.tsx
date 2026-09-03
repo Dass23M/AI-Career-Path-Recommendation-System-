@@ -209,8 +209,8 @@ export default function ProfilePage() {
     try {
       await saveProfile({
         ...formData,
-        skills:    formData.skills.split(",").map(s => s.trim()),
-        interests: formData.interests.split(",").map(s => s.trim()),
+        skills:    formData.skills ? formData.skills.split(",").map(s => s.trim()).filter(Boolean) : [],
+        interests: formData.interests ? formData.interests.split(",").map(s => s.trim()).filter(Boolean) : [],
       });
       setMessage({ type: "success", text: "Profile saved successfully" });
     } catch {

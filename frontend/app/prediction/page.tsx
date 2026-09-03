@@ -6,6 +6,7 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import { getCareerSlug } from "@/data/roadmapData";
+import { getMyProfile } from "@/services/profileService";
 
 // ── Dataset Options ────────────────────────────────────
 const EDUCATION_OPTIONS = ["Bachelor's", "Master's", "PhD"];
@@ -430,6 +431,24 @@ export default function PredictionPage() {
   const [result, setResult] = useState<any>(null);
   const [error, setError] = useState("");
   const [activeField, setActiveField] = useState<string | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await getMyProfile();
+        const data = res.data.data;
+        if (data) {
+          setFormData({
+            education: data.education || "",
+            skills: data.skills || [],
+            interests: data.interests || [],
+          });
+        }
+      } catch (err) {
+        // No profile found, stick to empty defaults
+      }
+    })();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

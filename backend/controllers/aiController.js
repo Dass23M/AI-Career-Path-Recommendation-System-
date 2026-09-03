@@ -18,7 +18,10 @@ exports.predictCareer = async (req, res) => {
     if (Array.isArray(interests)) interests = interests.join(", ");
 
     // 1️⃣ Call Flask AI service
-    const aiServiceUrl = process.env.AI_SERVICE_URL || "http://localhost:5001";
+    let aiServiceUrl = process.env.AI_SERVICE_URL || "http://localhost:5001";
+    if (aiServiceUrl.endsWith('/')) {
+      aiServiceUrl = aiServiceUrl.slice(0, -1);
+    }
     
     let flaskResponse;
     try {
