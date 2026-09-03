@@ -38,8 +38,9 @@ exports.predictCareer = async (req, res) => {
       console.error("Flask AI Service Connection Error:", flaskError.message);
       return res.status(500).json({
         success: false,
-        message: "AI service connection failed. Please ensure the AI service is running at " + aiServiceUrl,
-        error: flaskError.message
+        message: `Failed to connect to AI Service at ${aiServiceUrl}. Please check your AI_SERVICE_URL environment variable on Render!`,
+        error: flaskError.message,
+        details: flaskError.response ? flaskError.response.data : null
       });
     }
 
