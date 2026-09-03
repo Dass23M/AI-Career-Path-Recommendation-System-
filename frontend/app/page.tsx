@@ -205,34 +205,34 @@ const steps: Step[] = [
 ];
 
 const features: Feature[] = [
-  { icon: <IconTarget />, title: "AI-Powered Career Matching", desc: "Our algorithm evaluates 50+ data points from your profile to recommend careers with the highest success probability." },
-  { icon: <IconChart />, title: "Skill Gap Analysis", desc: "Instantly see which skills you need to develop to become competitive in your target career field." },
-  { icon: <IconMap />, title: "Personalized Roadmaps", desc: "Get a step-by-step learning and career plan tailored specifically to your current level and ambitions." },
-  { icon: <IconBook />, title: "Curated Learning Resources", desc: "Access hand-picked courses, certifications, and projects aligned with your recommended career path." },
-  { icon: <IconTrend />, title: "Industry Trend Insights", desc: "Stay ahead with real-time data on growing fields, in-demand roles, and emerging technologies." },
-  { icon: <IconChat />, title: "AI Career Advisor Chat", desc: "Chat anytime with our AI advisor to ask career questions, get resume tips, and interview prep." },
+  { icon: <IconTarget />, title: "Precision Career Mapping", desc: "Our proprietary AI evaluates 50+ data points—including education, latent skills, and market demand—to pinpoint high-probability career matches." },
+  { icon: <IconChart />, title: "Dynamic Skill Gap Analysis", desc: "Identify exactly which competencies you lack for your target role, with data pulled directly from current Fortune 500 job descriptions." },
+  { icon: <IconMap />, title: "Adaptive Learning Roadmaps", desc: "Receive a step-by-step, personalized curriculum that evolves as you acquire new skills, ensuring you stay on the fastest path to employment." },
+  { icon: <IconBook />, title: "Curated Resource Engine", desc: "Access a continuously updated library of top-rated courses, certifications, and project ideas specifically aligned with your career goals." },
+  { icon: <IconTrend />, title: "Real-Time Market Intel", desc: "Stay ahead of the curve with live insights into emerging technologies, salary trends, and hiring shifts within your chosen industry." },
+  { icon: <IconChat />, title: "24/7 AI Career Strategist", desc: "Consult our intelligent advisor anytime for resume optimization, interview simulations, and tactical career pivoting advice." },
 ];
 
 const careers: Career[] = [
-  { title: "Software Engineer", growth: "25%", icon: <IconCode /> },
+  { title: "Machine Learning Engineer", growth: "42%", icon: <IconCPU /> },
+  { title: "Cloud Solutions Architect", growth: "31%", icon: <IconCloud /> },
   { title: "Data Scientist", growth: "36%", icon: <IconData /> },
-  { title: "UX Designer", growth: "19%", icon: <IconDesign /> },
-  { title: "Cybersecurity Analyst", growth: "32%", icon: <IconShield /> },
-  { title: "AI/ML Engineer", growth: "40%", icon: <IconCPU /> },
-  { title: "Cloud Architect", growth: "28%", icon: <IconCloud /> },
+  { title: "Cybersecurity Analyst", growth: "35%", icon: <IconShield /> },
+  { title: "Full-Stack Developer", growth: "24%", icon: <IconCode /> },
+  { title: "Product Designer (UX/UI)", growth: "22%", icon: <IconDesign /> },
 ];
 
 const testimonials: Testimonial[] = [
-  { name: "Amara Silva", role: "Frontend Engineer at a Tech Startup", text: "I had no idea what to do after graduation. CareerAI showed me exactly what skills I needed and I landed my dream job in 8 months.", initials: "AS" },
-  { name: "Rohan Perera", role: "Data Analyst at a Finance Firm", text: "The skill gap analysis was eye-opening. I focused on the right things instead of wasting time on irrelevant courses.", initials: "RP" },
-  { name: "Nadia Khan", role: "UX Designer at an Agency", text: "The AI matched me to UX design when I thought I'd go into marketing. Best pivot of my life — now I love my work!", initials: "NK" },
+  { name: "Sarah Jenkins", role: "Former Teacher, now Data Analyst", text: "I wanted to transition into tech but felt overwhelmed by the options. The AI didn't just tell me what to do; it mapped out a realistic 6-month curriculum. I just landed my first role at a fintech startup.", initials: "SJ" },
+  { name: "Michael Chen", role: "Software Engineer at TechGlobal", text: "The skill gap analysis is incredibly accurate. It identified that my lack of cloud architecture knowledge was holding me back. Three certifications later, I secured a senior promotion.", initials: "MC" },
+  { name: "Elena Rodriguez", role: "Recent Computer Science Graduate", text: "University taught me theory, but this platform taught me exactly what employers are looking for right now. The curated project recommendations made my portfolio stand out instantly.", initials: "ER" },
 ];
 
 const faqs: Faq[] = [
-  { q: "Is this free to use?", a: "Yes! You can create a free account and get your first career prediction completely free. Premium plans unlock advanced features." },
-  { q: "How accurate is the AI prediction?", a: "Our model achieves 95% alignment accuracy based on user follow-up surveys 12 months after receiving recommendations." },
-  { q: "What data does the AI use?", a: "We analyze your academic background, skills, personal interests, personality indicators, and current market trends." },
-  { q: "Can I use this if I am already working?", a: "Absolutely. Career transitions are one of our most popular use cases. The AI adapts recommendations based on your existing experience." },
+  { q: "How does the AI determine my ideal career path?", a: "Our recommendation engine uses a specialized neural network trained on millions of real-world career trajectories, current job market demands, and skill-clustering algorithms to match your unique profile to high-growth roles." },
+  { q: "Is the platform suitable for career changers?", a: "Absolutely. Over 40% of our successful users are career pivoters. The AI excels at identifying transferable skills and highlighting the most efficient reskilling pathways for your new target industry." },
+  { q: "How frequently is the market data updated?", a: "Our data pipelines sync weekly with major job boards, salary databases, and economic reports to ensure your roadmap reflects the current hiring landscape, not outdated trends." },
+  { q: "Do I need technical experience to use this?", a: "Not at all. While we support advanced tech roles, the platform covers a wide spectrum of digital careers and guides you from absolute beginner to job-ready professional." },
 ];
 
 // ── page ────────────────────────────────────────────────

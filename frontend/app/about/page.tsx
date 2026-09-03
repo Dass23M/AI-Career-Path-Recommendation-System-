@@ -102,40 +102,40 @@ const TeamIllustration = () => (
 
 // ── Data ───────────────────────────────────────────────
 const stats = [
-  { num: "10K+", label: "Students Guided" },
-  { num: "95%",  label: "Prediction Accuracy" },
-  { num: "200+", label: "Career Paths" },
-  { num: "3",    label: "Years of Research" },
+  { num: "45K+", label: "Active Users" },
+  { num: "92%",  label: "Placement Rate (Within 6 Mos)" },
+  { num: "350+", label: "Mapped Career Trajectories" },
+  { num: "4.8/5", label: "Average User Rating" },
 ];
 
 const values = [
   {
     index: "01",
-    title: "Accuracy First",
-    desc: "Every recommendation is backed by real labor market data and validated by career professionals — not guesswork.",
+    title: "Data-Driven Precision",
+    desc: "Our recommendations aren't based on generic personality tests. We rely on hard labor market analytics, analyzing millions of job postings to align your skills with actual employer demands.",
   },
   {
     index: "02",
-    title: "Student-Centered",
-    desc: "We build for the student who doesn't know where to start — not for institutions. Your clarity is the only metric that matters.",
+    title: "Unbiased Matching",
+    desc: "We designed our neural network to eliminate traditional hiring biases. Our AI looks strictly at competency, growth potential, and market fit to surface opportunities you might have overlooked.",
   },
   {
     index: "03",
-    title: "Transparent AI",
-    desc: "You see exactly why we recommend what we recommend. No black-box decisions. No hidden agendas.",
+    title: "Actionable Intelligence",
+    desc: "Insight without action is useless. We go beyond telling you what career fits you by providing the exact, step-by-step roadmap and resources required to actually get there.",
   },
   {
     index: "04",
-    title: "Continuously Learning",
-    desc: "Our models retrain monthly on new job market data. The advice you get today reflects the world as it is — not three years ago.",
+    title: "Continuous Adaptation",
+    desc: "The job market evolves rapidly, and so do our models. We retrain our AI infrastructure weekly to ensure our career trajectories reflect the technologies and roles of tomorrow, not yesterday.",
   },
 ];
 
 const team = [
-  { initials: "AS", name: "Amara Silva",  role: "Founder & AI Lead",        bg: "#0a0a0a", text: "#c8b89a" },
-  { initials: "RP", name: "Rohan Perera", role: "Head of Career Research",   bg: "#f5f0e8", text: "#0a0a0a" },
-  { initials: "NK", name: "Nadia Khan",   role: "Lead UX Designer",          bg: "#c8b89a", text: "#0a0a0a" },
-  { initials: "JM", name: "James Müller", role: "Machine Learning Engineer", bg: "#0a0a0a", text: "#c8b89a" },
+  { initials: "DR", name: "Dr. David Reynolds", role: "Co-Founder & Chief Scientist", bg: "#0a0a0a", text: "#c8b89a" },
+  { initials: "SC", name: "Sarah Chen",         role: "VP of Product Strategy",       bg: "#f5f0e8", text: "#0a0a0a" },
+  { initials: "MK", name: "Marcus King",        role: "Head of Machine Learning",     bg: "#c8b89a", text: "#0a0a0a" },
+  { initials: "EO", name: "Elena Ortega",       role: "Lead User Experience Designer", bg: "#0a0a0a", text: "#c8b89a" },
 ];
 
 // ── Page ───────────────────────────────────────────────
